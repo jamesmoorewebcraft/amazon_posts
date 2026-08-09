@@ -5721,10 +5721,26 @@ Hard requirements:
     return candidate, report
 
 
-def _visible_article_text(html: str) -> str:
+def _visible_article_text(
+    html: str,
+    *,
+    include_tables: bool = True,
+) -> str:
+    """Return normalized visible article text.
+
+    Tables remain included by default because model-assisted audits and identity
+    checks benefit from seeing the whole article. Deterministic prose provenance
+    checks can set ``include_tables=False`` so row/column values are not flattened
+    into a text stream and accidentally assigned to the wrong product.
+    """
     soup = BeautifulSoup(html or "", "html.parser")
     for node in soup.find_all(["script", "style", "code", "pre"]):
         node.decompose()
+
+    if not include_tables:
+        for table in soup.find_all("table"):
+            table.decompose()
+
     return re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
 
 
@@ -6064,9 +6080,16 @@ def _deterministic_semantic_claim_violations(
         return []
 
     primary = str(recommended_product or canonical_profile.get("primary_product") or "")
+
+    # Comparison tables need row/column context. Flattening them into prose can
+    # make a value from one product column appear to belong to the active prose
+    # subject (for example, a 32L weight being assigned to the reviewed 25L).
+    # Keep tables visible to the model-assisted audit, but exclude them from this
+    # deterministic prose-provenance scan.
+    prose_text = _visible_article_text(html, include_tables=False)
     passages = [
         value.strip()
-        for value in re.split(r"(?<=[.!?])\s+|[\r\n]+", _visible_article_text(html))
+        for value in re.split(r"(?<=[.!?])\s+|[\r\n]+", prose_text)
         if value.strip()
     ]
     passage_contexts = []

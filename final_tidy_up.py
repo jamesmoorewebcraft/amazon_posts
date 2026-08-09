@@ -518,6 +518,25 @@ def process_blog_file(
                 f"identity={len(final_qa_report.get('identity_issues', []))}"
             )
 
+            # Print actionable details for any deterministic semantic blockers so
+            # a failed batch run can be diagnosed without opening the JSON report.
+            semantic_issues = final_qa_report.get(
+                "deterministic_semantic_violations",
+                [],
+            )
+            for index, issue in enumerate(semantic_issues, start=1):
+                print(
+                    f"[FINAL_QA:{index}] "
+                    f"{issue.get('attribute', 'unknown')}: "
+                    f"{issue.get('reason', 'No reason supplied')}"
+                )
+                passage = issue.get("passage")
+                if passage:
+                    print(f"    Passage: {passage}")
+                repair = issue.get("repair")
+                if repair:
+                    print(f"    Repair: {repair}")
+
         # Remove empty lines that might result
         content = re.sub(r'^\s*$', '', content, flags=re.MULTILINE)
 
