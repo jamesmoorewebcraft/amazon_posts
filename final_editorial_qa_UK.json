@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "cleanup": {
+    "enabled": true,
+    "hands_on_rewrites": 0,
+    "attribution_rewrites": 0,
+    "price_rewrites": 0,
+    "source_fragment_rewrites": 0,
+    "required_attribution_repairs": 2,
+    "repeated_canonical_facts_removed": 0,
+    "cross_model_inferences_removed": 0,
+    "ambiguous_measurements_scoped": 0,
+    "claim_strength_rewrites": 0,
+    "adjacent_attribute_repetitions_removed": 0,
+    "near_duplicate_sentences_removed": 0,
+    "vague_table_values_replaced": 0,
+    "observational_table_values_qualified": 0,
+    "collective_material_claims_qualified": 0,
+    "restrained_style_rewrites": 0,
+    "raw_feature_fragments_removed": 0,
+    "raw_feature_fragments_rewritten": 0,
+    "malformed_source_rewrites": 0,
+    "unsupported_comparative_rewrites": 0,
+    "unsupported_security_benefits_removed": 0,
+    "misplaced_summaries_removed": 0,
+    "verdict_drawbacks_added": 0
+  },
+  "last_pass_qa": {
+    "lists": 0,
+    "faq_synced": 2,
+    "orphaned": 0,
+    "source_status": 0,
+    "source_fragments": 0,
+    "lifespan": 0,
+    "zipper": 3,
+    "load_repeat": 0,
+    "device_section_leads": 0
+  },
+  "canonical_conflicts": [],
+  "canonical_warnings": [
+    {
+      "product": "Patagonia Black Hole Pack 25L",
+      "attribute": "water_protection",
+      "canonical_value": "water-resistant",
+      "values": [
+        "waterproof"
+      ],
+      "passages": [
+        {
+          "value": "waterproof",
+          "passage": "The Patagonia Black Hole Pack 25L uses a 100% recycled polyester ripstop fabric with a TPU-film laminate and a DWR finish. This combination creates a tough outer shell that resists tears and repels water, though it is not fully waterproof. The material is easy to clean; users report that shaking off sand or wiping with a cloth restores its look.",
+          "reason": "negated"
+        },
+        {
+          "value": "waterproof",
+          "passage": "The Patagonia Black Hole Pack 25L uses a 100% recycled polyester ripstop fabric with a TPU-film laminate and a DWR finish. This combination sheds light rain effectively, and one reviewer reported surviving a monsoon commute with dry contents. However, the pack is not fully waterproof. Available sources did not reliably confirm this model's zipper performance in sustained heavy rain, so sensitive equipment may still benefit from additional protection.",
+          "reason": "negated"
+        },
+        {
+          "value": "waterproof",
+          "passage": "Q2. Is the Patagonia Black Hole Pack 25L waterproof? The Patagonia Black Hole Pack 25L is water-resistant, but it is not fully waterproof. It can handle light rain, but water may enter through the zippers during heavy downpours. For most daily commutes, this level of protection is sufficient.",
+          "reason": "question"
+        },
+        {
+          "value": "waterproof",
+          "passage": "Q2. Is the Patagonia Black Hole Pack 25L waterproof? The Patagonia Black Hole Pack 25L is water-resistant, but it is not fully waterproof. It can handle light rain, but water may enter through the zippers during heavy downpours. For most daily commutes, this level of protection is sufficient.",
+          "reason": "negated"
+        },
+        {
+          "value": "waterproof",
+          "passage": "{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"What is the Patagonia Black Hole Pack 25L made of?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The Patagonia Black Hole Pack 25L is made from 100% recycled polyester ripstop with a TPU-film laminate. This material is designed to be durable and water-resistant. It helps protect your gear from light rain and daily wear and tear.\"}}, {\"@type\": \"Question\", \"name\": \"Is the Patagonia Black Hole Pa",
+          "reason": "question"
+        },
+        {
+          "value": "waterproof",
+          "passage": "{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"What is the Patagonia Black Hole Pack 25L made of?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"The Patagonia Black Hole Pack 25L is made from 100% recycled polyester ripstop with a TPU-film laminate. This material is designed to be durable and water-resistant. It helps protect your gear from light rain and daily wear and tear.\"}}, {\"@type\": \"Question\", \"name\": \"Is the Patagonia Black Hole Pa",
+          "reason": "negated"
+        }
+      ]
+    }
+  ],
+  "deterministic_semantic_violations": [
+    {
+      "product": "Patagonia Black Hole Pack 25L",
+      "attribute": "claim_provenance",
+      "passage": "640 g) 1045 g Not confirmed Laptop fit Most 15-inch laptops 16-inch MacBook Pro 13-inch laptop Load support Not confirmed Reported manageable around 9 kg Comfortable when full Recycled TPU-Laminated Ripstop Build Patagonia Black Hole Pack 25L combines a rugged 100% recycled TPU-laminated ripstop build with a padded 15-inch laptop sleeve; its load support is not confirmed.",
+      "reason": "The distinctive evidence marker '1045g' belongs only to Patagonia Black Hole 32L, but this passage assigns or implies it for Patagonia Black Hole Pack 25L.",
+      "repair": "Remove the observation or explicitly attribute it to Patagonia Black Hole 32L; do not transfer it to the reviewed product.",
+      "evidence_owner": "Patagonia Black Hole 32L",
+      "evidence_attribute": "weight"
+    },
+    {
+      "product": "Patagonia Black Hole Pack 25L",
+      "attribute": "claim_provenance",
+      "passage": "640 g) 1045 g Not confirmed Laptop fit Most 15-inch laptops 16-inch MacBook Pro 13-inch laptop Load support Not confirmed Reported manageable around 9 kg Comfortable when full Recycled TPU-Laminated Ripstop Build Patagonia Black Hole Pack 25L combines a rugged 100% recycled TPU-laminated ripstop build with a padded 15-inch laptop sleeve; its load support is not confirmed.",
+      "reason": "The distinctive evidence marker '13inch' belongs only to Patagonia Women’s Blackhole Backpack 23l, but this passage assigns or implies it for Patagonia Black Hole Pack 25L.",
+      "repair": "Remove the observation or explicitly attribute it to Patagonia Women’s Blackhole Backpack 23l; do not transfer it to the reviewed product.",
+      "evidence_owner": "Patagonia Women’s Blackhole Backpack 23l",
+      "evidence_attribute": "source_observation"
+    }
+  ],
+  "identity_issues": [],
+  "unverified_binary_travel_feature_claims": [],
+  "blocked": true
+}
